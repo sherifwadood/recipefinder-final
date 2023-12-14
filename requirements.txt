@@ -3,3 +3,6 @@ requests
 python-dotenv
 
 flask 
+
+#PRODUCTION SERVER NEEDS THIS TO RUN THE WEB APP
+gunicorn
