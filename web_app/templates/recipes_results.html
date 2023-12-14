@@ -1,0 +1,46 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "recipes" %}
+
+{% block content %}
+
+<!-- Recipes Section -->
+<section class="container mt-5">
+    <h2 class="text-center mb-4">Recipes Based on Your Ingredients</h2>
+    <div class="row">
+        {% for hit in recipes %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <!-- Accessing the image, label, and URL from the recipe object -->
+                <img src="{{ hit['recipe']['image'] }}" class="card-img-top" alt="{{ hit['recipe']['label'] }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ hit['recipe']['label'] }}</h5>
+                    <p class="card-text">
+                        <strong>Ingredients:</strong>
+                        <ul>
+                            {% for ingredient in hit['recipe']['ingredientLines'] %}
+                            <li>{{ ingredient }}</li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+                    
+                     <!-- Displaying Nutritional Information -->
+                     <p class="card-text">
+                        <strong>Nutritional Information Per Serving:</strong>
+                        <br> Calories: {{ hit['recipe']['totalNutrients']['ENERC_KCAL']['quantity']|round }} kcal
+                        <br> Fat: {{ hit['recipe']['totalNutrients']['FAT']['quantity']|round }} g
+                        <br> Carbohydrates: {{ hit['recipe']['totalNutrients']['CHOCDF']['quantity']|round }} g
+                        <br> Protein: {{ hit['recipe']['totalNutrients']['PROCNT']['quantity']|round }} g
+                    </p>
+                    
+                    <a href="{{ hit['recipe']['url'] }}" class="btn btn-success" target="_blank">View Recipe</a>
+
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center">No recipes found. Try different ingredients.</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

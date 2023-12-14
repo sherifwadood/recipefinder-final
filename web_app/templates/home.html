@@ -1,0 +1,124 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "home" %}
+
+{% block content %} 
+
+   <!-- Hero Section -->
+<div class="p-5 bg-image" style="background-image: url('https://images.buyagift.co.uk/common/client/Images/Product/Extralarge/en-GB/107103162-Activity-5.jpg'); height: 400px; background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white text-center">
+            <h1 class="mb-3">Welcome to Cooking Buddy!</h1>
+            <h4 class="mb-3">Discover Recipes Based on Ingredients You Have at Home</h4>
+        </div>
+    </div>
+</div>
+
+    <!-- Search Section -->
+<section id="searchSection" class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <p class="text-center">Cooking Buddy is your go-to app for exploring an array of delicious recipes tailored to the ingredients you already have.  Whether you're an experienced chef or just starting out, our app is designed to inspire creativity and ease your cooking experience. We believe that a great meal starts with what you have in your fridge. </p>
+            <p class="text-center">Enter the ingredients you have, and let us suggest the best recipes for you!</p>
+            <form class="d-flex flex-column align-items-center" action="/recipes" method="post">
+                
+                <!-- Search Input with Icon -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input type="search" class="form-control" name="ingredients" placeholder="Enter ingredients" aria-label="Search">
+                </div>
+
+                <!-- Dish Type Filter inside a Card -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <select class="form-select" name="dishType">
+                            <option value="">Select Dish Type</option>
+                            <option value="starter">Starter</option>
+                            <option value="main course">Main Course</option>
+                            <option value="dessert">Desserts</option>
+                            <option value="soup">Soup</option>
+                            <option value="drinks">Drinks</option>
+                            <option value="cocktails">Cocktails</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Meal Type Filter inside a Card -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <select class="form-select" name="mealType">
+                            <option value="">Select Meal Type</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch/dinner">Lunch/Dinner</option>
+                            <option value="snack">Snack</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+
+  <!-- Featured Recipes Carousel Section -->
+<section class="container mt-5">
+    <h2 class="text-center mb-4">Featured Recipes</h2>
+    <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for chunk in featured_recipes|batch(3, '&nbsp;') %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <div class="row">
+                    {% for recipe in chunk %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="{{ recipe['image'] }}" class="card-img-top" alt="{{ recipe['label'] }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ recipe['label'] }}</h5>
+                                <p class="card-text">{{ recipe['source'] if 'source' in recipe else 'Delicious recipe' }}</p>
+                                <a href="{{ recipe['url'] }}" class="btn btn-success" target="_blank">View Recipe</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- Carousel Controls -->
+        <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#recipeCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+</section>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

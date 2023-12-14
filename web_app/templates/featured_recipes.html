@@ -1,0 +1,41 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "featured_recipes" %}
+
+{% block content %}
+
+<!-- Featured Recipes Full Section -->
+<section class="container mt-5">
+    <h2 class="text-center mb-4">Featured Recipes</h2>
+    <div class="row">
+        {% for recipe in featured_recipes %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ recipe['image'] }}" class="card-img-top" alt="{{ recipe['label'] }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ recipe['label'] }}</h5>
+                    <p class="card-text">
+                        <strong>Ingredients:</strong>
+                        <ul>
+                            {% for ingredient in recipe['ingredientLines'] %}
+                            <li>{{ ingredient }}</li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+                    <p class="card-text">
+                        <strong>Nutritional Information:</strong>
+                        <br> Calories: {{ recipe['totalNutrients']['ENERC_KCAL']['quantity']|round }} kcal
+                        <br> Fat: {{ recipe['totalNutrients']['FAT']['quantity']|round }} g
+                        <br> Carbs: {{ recipe['totalNutrients']['CHOCDF']['quantity']|round }} g
+                        <br> Protein: {{ recipe['totalNutrients']['PROCNT']['quantity']|round }} g
+                    </p>
+                    <a href="{{ recipe['url'] }}" class="btn btn-success" target="_blank">View Recipe</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center">No featured recipes found.</p>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

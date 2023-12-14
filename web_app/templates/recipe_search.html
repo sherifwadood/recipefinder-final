@@ -1,0 +1,60 @@
+{% extends "bootstrap_5_layout.html" %}
+{% set active_page = "search" %}
+
+{% block content %} 
+
+<!-- Hero Section -->
+<section class="hero-section" style="background-image: url('https://www.usu.edu/today/images/stories/lg/23_EXT_Expert-Cooking_UST.jpg'); background-size: cover; padding: 60px 0;">
+    <div class="container text-center">
+        <h1 class="text-white display-4">Find Your Next Delicious Meal</h1>
+        <p class="lead text-white">Start by entering the ingredients you have!</p>
+    </div>
+</section>
+
+<!-- Search Section -->
+<section id="searchSection" class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form class="d-flex flex-column align-items-center" action="/recipes" method="post">
+                <!-- Search Input -->
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input type="search" class="form-control" name="ingredients" placeholder="Enter ingredients" aria-label="Search">
+                </div>
+                
+                <!-- Dish Type Filter -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Filter by Dish Type</h5>
+                        <select class="form-select" name="dishType">
+                            <option value="">Select Dish Type</option>
+                            <option value="starter">Starter</option>
+                            <option value="main course">Main Course</option>
+                            <option value="dessert">Desserts</option>
+                            <option value="soup">Soup</option>
+                            <option value="drinks">Drinks</option>
+                            <option value="cocktails">Cocktails</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Meal Type Filter -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Filter by Meal Type</h5>
+                        <select class="form-select" name="mealType">
+                            <option value="">Select Meal Type</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch/dinner">Lunch/Dinner</option>
+                            <option value="snack">Snack</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
