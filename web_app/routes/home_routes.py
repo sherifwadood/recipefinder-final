@@ -34,8 +34,14 @@ def recipes():
         # Fetch recipes using the API with filters
         recipes_data = fetch_recipes(ingredients_list, dish_type, meal_type)
 
-        # Render the recipes template with the data
-        return render_template("recipes_results.html", recipes=recipes_data["hits"])
+
+        if recipes_data and not recipes_data.get("no_recipes"):
+                    #Render the recipes_results page with data if recipe data exists and contains recipe matches in it
+                    return render_template("recipes_results.html", recipes=recipes_data["hits"])
+        else:
+            #If there is an error rendering the recipe results page display an error message saying that no recipes were found 
+            return render_template("recipes_results.html", error="No recipes found for the given ingredients, please try again and input valid ingredients.")
+    
     else:
         # Redirect to home if not a POST request
         return render_template("recipe_search.html")
