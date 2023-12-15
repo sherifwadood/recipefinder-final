@@ -1,6 +1,6 @@
 # License
 
-Copyright (c) 2015-2024 [Michael Salmon](mailto:ms4697@georgetown.edu) [Zaki Bouaoudia](mailto:zb127@georgetown.edu) [Sherif Abdelwadood](mailto:sma337@georgetown.edu).
+Copyright (c) 2015-2023 [Michael Salmon](mailto:ms4697@georgetown.edu) [Zaki Bouaoudia](mailto:zb127@georgetown.edu) [Sherif Abdelwadood](mailto:sma337@georgetown.edu).
 
 This work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/), as summarized below.
 
