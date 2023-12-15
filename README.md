@@ -22,11 +22,13 @@ pip install -r requirements.txt
 Obtain an [API from Edamam](https://developer.edamam.com/edamam-docs-recipe-api)
 
 Create a ".env" file and paste in the following contents:
-
+```sh
 # this is the ".env" file...
 
 EDAMAM_API_KEY="_________"
 EDAMAM_APP_ID ="_________"
+
+```
 
 ## Usage
 

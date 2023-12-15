@@ -8,14 +8,9 @@ from urllib.parse import quote_plus
 def fetch_recipes(ingredients, dish_type=None, meal_type=None, cuisine_type=None):
     # Base request URL
     request_url = f"https://api.edamam.com/api/recipes/v2?type=public&q={'%20'.join(ingredients)}&app_id={APP_ID}&app_key={API_KEY}&field=label&field=ingredientLines&field=image&field=url&field=totalNutrients&field=cuisineType&field=mealType&field=dishType&field=tags&field=calories&field=instructions"
+    request_url += "&mealType=lunch dinner"
+    print("Request URL:", request_url)
 
-    # Append filters to the request URL if they are provided
-    if dish_type:
-        request_url += f"&dishType={quote_plus(dish_type.lower())}"
-    if meal_type:
-        formatted_meal_type = meal_type.replace('/', ' ')  # Replace '/' with a space
-        request_url += f"&mealType={quote_plus(formatted_meal_type.lower())}"
-    
     response = requests.get(request_url)
     if response.status_code == 200:
         data = response.json()

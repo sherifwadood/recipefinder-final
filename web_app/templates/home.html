@@ -1,30 +1,30 @@
 {% extends "bootstrap_5_layout.html" %}
 {% set active_page = "home" %}
 
-{% block content %} 
+{% block content %}
 
-   <!-- Hero Section -->
+<!-- Hero Section -->
 <div class="p-5 bg-image" style="background-image: url('https://images.buyagift.co.uk/common/client/Images/Product/Extralarge/en-GB/107103162-Activity-5.jpg'); height: 400px; background-size: cover; background-repeat: no-repeat; background-position: center;">
     <div class="d-flex justify-content-center align-items-center h-100">
         <div class="text-white text-center">
             <h1 class="mb-3">Welcome to Cooking Buddy!</h1>
-            <h4 class="mb-3">Discover Recipes Based on Ingredients You Have at Home</h4>
+            <h4 class="mb-4">Discover Recipes Based on Ingredients You Have at Home</h4>
         </div>
     </div>
 </div>
 
-    <!-- Search Section -->
-<section id="searchSection" class="container mt-5">
+<!-- Search Section -->
+<section id="searchSection" class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <p class="text-center">Cooking Buddy is your go-to app for exploring an array of delicious recipes tailored to the ingredients you already have.  Whether you're an experienced chef or just starting out, our app is designed to inspire creativity and ease your cooking experience. We believe that a great meal starts with what you have in your fridge. </p>
-            <p class="text-center">Enter the ingredients you have, and let us suggest the best recipes for you!</p>
+            <p class="text-center lead">Cooking Buddy is your go-to app for exploring an array of delicious recipes tailored to the ingredients you already have. Whether you're an experienced chef or just starting out, our app is designed to inspire creativity and ease your cooking experience. We believe that a great meal starts with what you have in your fridge.</p>
+            <p class="text-center fw-bold mb-4">Enter the ingredients you have, and let us suggest the best recipes for you!</p>
             <form class="d-flex flex-column align-items-center" action="/recipes" method="post">
                 
                 <!-- Search Input with Icon -->
-                <div class="input-group mb-3">
+                <div class="input-group mb-4">
                     <span class="input-group-text"><i class="bi bi-search"></i></span>
-                    <input type="search" class="form-control" name="ingredients" placeholder="Enter ingredients" aria-label="Search">
+                    <input type="search" class="form-control" name="ingredients" placeholder="Enter ingredients" aria-label="Search" required>
                 </div>
 
                 <!-- Dish Type Filter inside a Card -->
@@ -38,12 +38,13 @@
                             <option value="soup">Soup</option>
                             <option value="drinks">Drinks</option>
                             <option value="cocktails">Cocktails</option>
+                            <option value="condiments and sauces">Condiments and Sauces</option>
                         </select>
                     </div>
                 </div>
 
                 <!-- Meal Type Filter inside a Card -->
-                <div class="card mb-3">
+                <div class="card mb-4">
                     <div class="card-body">
                         <select class="form-select" name="mealType">
                             <option value="">Select Meal Type</option>
@@ -54,13 +55,14 @@
                     </div>
                 </div>
 
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-success" type="submit">Search</button>
             </form>
         </div>
     </div>
+</section>
 
-  <!-- Featured Recipes Carousel Section -->
-<section class="container mt-5">
+<!-- Featured Recipes Carousel Section -->
+<section class="container my-5">
     <h2 class="text-center mb-4">Featured Recipes</h2>
     <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -95,30 +97,4 @@
     </div>
 </section>
 
-
-
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
